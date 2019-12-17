@@ -11,6 +11,6 @@ module.exports.run = async (bot, message, args) => {
             memberName.addRole(rolesGive);
             message.reply(`Successfuly added role ${rolesGive} to ${memberName}!`)
         }else{
-            message.reply(`${memberName} already have a role ${roleName}!`)
+            message.reply(`${memberName} already has a role ${roleName}!`)
         }
     }
