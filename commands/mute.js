@@ -6,7 +6,7 @@ module.exports.run = async (bot, message, args) => {
     if(!message.guild) return;
     if(!message.member.roles.find(r => r.name === "Modernator" || r.name === "Owner" || r.name === "Administrator" || r.name === "Trial Modernator")) return message.reply('You dont have permission to use this command!');
     let person  = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]))
-    let mainrole = message.guild.roles.find(role => role.name === "Verified");
+    let mainrole = message.guild.roles.find(role => role.name === "Member");
     let muterole = message.guild.roles.find(role => role.name === "Muted");
     let time = args[1];
     let reason = args.slice(2).join(' ');
@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args) => {
     if(!time) return message.reply("You need to specify time!");
     if(!reason) return message.reply("You need to specify a reason!");
     if(!muterole) return message.reply("Cloudn't find role ``@Muted``");
-    if(!mainrole) return message.reply("Cloudn't find role ``@Verified``");
+    if(!mainrole) return message.reply("Cloudn't find role ``@Member``");
     if(!logs) return message.reply(`Cloudn't find channel ``logs```);
     const embeds = new Discord.RichEmbed()
         .setColor('BLUE')
