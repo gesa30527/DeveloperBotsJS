@@ -4,7 +4,7 @@ module.exports.run = async (bot, message, args) => {
     // if(message.channel.type == "dm"){
     //     message.author.send("Hi")
     // }
-    const categoryId = message.guild.channels.get(ch => ch.name === "Tickets")
+    const categoryId = message.guild.channels.get(ch => ch.name === "tickets")
     var userName = message.author.username;
     var userDiscriminator = message.author.discriminator;
     var bool = false;
@@ -19,18 +19,6 @@ module.exports.run = async (bot, message, args) => {
     message.guild.createChannel(userName + "-" + userDiscriminator, "text").then((createdChan) => {
         createdChan.setParent(categoryId).then((settedParent) => {
             settedParent.overwritePermissions(message.guild.roles.find('name', "@everyone"), { "READ_MESSAGES": false });
-            settedParent.overwritePermissions(message.guild.roles.find('name', "Moderators"), { 
-                "READ_MESSAGES": true, 
-                "SEND_MESSAGES": true 
-            });
-            settedParent.overwritePermissions(message.guild.roles.find('name', "Scam Investigation"), { 
-                "READ_MESSAGES": true, 
-                "SEND_MESSAGES": true 
-            });
-            settedParent.overwritePermissions(message.guild.roles.find('name', "Trial Moderators"), { 
-                "READ_MESSAGES": true, 
-                "SEND_MESSAGES": true 
-            });
             settedParent.overwritePermissions(message.author, {
                 "READ_MESSAGES": true, "SEND_MESSAGES": true,
                 "ATTACH_FILES": true, "CONNECT": true,
@@ -38,9 +26,21 @@ module.exports.run = async (bot, message, args) => {
             });
             var embedParent = new Discord.RichEmbed()
                 .setTitle("Hi, " + message.author.username.toString())
-                .setDescription("Hello " + message.author.username + " this is your ticket, you can suggest or report anything for this server.")
+                .setDescription("Hello " + message.author.username + ` this is your ticket, you can suggest or report anything for this server.
+                React with (❎) to close ticket!`)
                 .setColor("BLUE")
-            settedParent.send(embedParent);
+            settedParent.send(embedParent).then(embedMessage => {
+                embedMessage.react("❎")
+                const filter = (r, u) => r.me && !u.bot,collector = embedMessage.createReactionCollector(filter, { max: 1});                
+                collector.on('collect', (r) => {
+                    switch (r.emoji.name) {
+                        case '❎': {
+                            embedMessage.channel.delete(3000);
+                            break;
+                        }
+                    }
+                })
+            })
         }).catch(err => {
             message.channel.send(err);
         });
