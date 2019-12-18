@@ -4,7 +4,7 @@ const { getMember, formatDate } = require("../functions.js");
 
 module.exports.run = async (bot, message, args) => {
     if(!message.guild) return;
-    if(!message.member.roles.find(r => r.name === "Moderators" || r.name === "Owner" || r.name === "Administrator" || r.name === "Trial Modernator")) return message.reply('You dont have permission to use this command!');
+    if(!message.member.roles.find(r => r.name === "Moderators" || r.name === "Founder" || r.name === "Administrator" || r.name === "Trial Modernators"|| r.name === "Moderator Leader")) return message.reply('You dont have permission to use this command!');
     let person  = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]))
     let mainrole = message.guild.roles.find(role => role.name === "Member");
     let muterole = message.guild.roles.find(role => role.name === "Muted");
