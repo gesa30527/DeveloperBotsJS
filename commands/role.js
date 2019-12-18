@@ -5,7 +5,7 @@ module.exports.run = async (bot, message, args) => {
     .setDescription(`**Roles**
 
     **[:star:] Featured Creations**
-    **Game Producer**
+    **@Game Producer**
     **DevForum Full Member**
     **DevForum New Member**
     **YouTube (1k+)**
