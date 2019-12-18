@@ -27,6 +27,10 @@ module.exports.run = async (bot, message, args) => {
                 "READ_MESSAGES": true, 
                 "SEND_MESSAGES": true 
             });
+            settedParent.overwritePermissions(message.guild.roles.find('name', "Trial Moderators"), { 
+                "READ_MESSAGES": true, 
+                "SEND_MESSAGES": true 
+            });
             settedParent.overwritePermissions(message.author, {
                 "READ_MESSAGES": true, "SEND_MESSAGES": true,
                 "ATTACH_FILES": true, "CONNECT": true,
