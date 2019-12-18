@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const { getMember, formatDate } = require("../functions.js");
 
 module.exports.run = async (bot, message, args) => {
     if(!message.guild) return;
