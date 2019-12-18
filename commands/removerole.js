@@ -1,6 +1,6 @@
 module.exports.run = async (bot, message, args) => {
     if(!message.guild) return;
-    if(!message.member.roles.find(r => r.name === "Moderators" || r.name === "Founder" || r.name === "Administrator"|| r.name === "Moderator Leader"|| r.name === "Trial Moderators"||r.name === "Application Reader")) return message.reply('You dont have permission to use this command!');
+    if(!message.member.roles.find(r => r.name === "Moderators" || r.name === "Founder" || r.name === "Administrator"|| r.name === "Moderator Leader"|| r.name === "Trial Moderators"||r.name === "Application Reader"||r.name === "Trial Application Reader")) return message.reply('You dont have permission to use this command!');
     let memberName = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     let roleName = args.slice(1).join(' ');
     if(!memberName) return message.reply("You need to specify a member!")
