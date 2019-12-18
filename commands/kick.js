@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
     if(!message.guild) return;
-    if(!message.member.roles.find(r => r.name === "Modernator" || r.name === "Owner" || r.name === "Administrator")) return message.reply('You dont have permission to use this command!');
+    if(!message.member.roles.find(r => r.name === "Moderators" || r.name === "Owner" || r.name === "Administrator")) return message.reply('You dont have permission to use this command!');
     let target = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     let reason = args.slice(1).join(' ');
     let logs = message.guild.channels.find(ch => ch.name === "logs");
