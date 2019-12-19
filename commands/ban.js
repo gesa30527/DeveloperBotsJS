@@ -9,7 +9,7 @@ module.exports.run = async (bot, message, args) => {
     let logs = message.guild.channels.find(ch => ch.name === "🔍mod-logs");
     if (!target) return message.reply('You need to specify a member!');
     if (!reason) return message.reply('You need to specify a reason!');
-    if (!logs) return message.reply(`Cloudn't find channel ``:mag:mod-logs```);
+    if (!logs) return message.reply(`Cloudn't find channel ``🔍mod-logs```);
     let embed = new Discord.RichEmbed()
         .setColor('BLUE')
         .setThumbnail(target.user.avatarURL)
