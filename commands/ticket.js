@@ -35,11 +35,10 @@ module.exports.run = async (bot, message, args) => {
                 .setColor("BLUE")
             settedParent.send(embedParent).then(embedMessage => {
                 embedMessage.react("❎")
-                const filter = (r, u) => r.me && !u.bot,collector = embedMessage.createReactionCollector(filter, { max: 1});                
-                collector.on('collect', (r) => {
+                const filter = (r, u) => r.me && !u.bot && message.guild.members.get(u.id).roles.find(r => r.name === "Moderators" || r.name === "Founder" || r.name === "Administrator")),collector = embedMessage.createReactionCollector(filter, { max: 1});                collector.on('collect', (r) => {
                     switch (r.emoji.name) {
                         case '❎': {
-                            embedMessage.channel.delete(3000);
+                            embedMessage.channel.delete(0);
                             break;
                         }
                     }
