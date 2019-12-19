@@ -10,13 +10,13 @@ module.exports.run = async (bot, message, args) => {
     let muterole = message.guild.roles.find(role => role.name === "Muted");
     let time = args[1];
     let reason = args.slice(2).join(' ');
-    let logs = message.guild.channels.find(ch => ch.name === "logs");
+    let logs = message.guild.channels.find(ch => ch.name === "🔍mod-logs");
     if(!person) return message.reply("You need to specify a member!");
     if(!time) return message.reply("You need to specify time!");
     if(!reason) return message.reply("You need to specify a reason!");
     if(!muterole) return message.reply("Cloudn't find role ``@Muted``");
     if(!mainrole) return message.reply("Cloudn't find role ``@Member``");
-    if(!logs) return message.reply(`Cloudn't find channel ``logs```);
+    if(!logs) return message.reply(`Cloudn't find channel ``🔍mod-logs```);
     const embeds = new Discord.RichEmbed()
         .setColor('BLUE')
         .setThumbnail(person.user.avatarURL)
