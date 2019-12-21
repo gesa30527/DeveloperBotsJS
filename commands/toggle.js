@@ -69,8 +69,8 @@ if(args[0].toLowerCase() === "newsping"){
 }
 /////////////////////////////////////////////////////////////////////////////////
 if(args[0].toLowerCase() === "hireable"){
-    const roleH = message.member.guild.roles.find("name", "Hire Able")
-        if(!roleH) return message.reply("Cloud't find role ``Hire Able``!");
+    const roleH = message.member.guild.roles.find("name", "Hireable")
+        if(!roleH) return message.reply("Cloud't find role ``Hireable``!");
         if(!args[1]) return message.reply("You need to specify ``<on-off>``")
         if(args[1].toLowerCase() === "on"){
         if(!message.member.roles.find(r => r === roleH )){
